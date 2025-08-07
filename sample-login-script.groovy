@@ -9,7 +9,6 @@ import org.openqa.selenium.Keys as Keys
 
 // Open browser and navigate to Todoist
 WebUI.openBrowser('https://app.todoist.com')
-WebUI.setViewPortSize(1920, 1080)
 WebUI.delay(3)
 
 // Define robust XPath for username field
