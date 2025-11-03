@@ -4,7 +4,7 @@
 # or more contributor license agreements.  See the NOTICE file
 # distributed with this work for additional information
 # regarding copyright ownership.  The ASF licenses this file
-# to you under the Apache License, Version 2.0 (the
+# to you under the Apache License, Version  2.0 (the
 # "License"); you may not use this file except in compliance
 # with the License.  You may obtain a copy of the License at
 #
@@ -18,10 +18,7 @@
 # under the License.
 # ----------------------------------------------------------------------------
 
-# ----------------------------------------------------------------------------
-# Apache Maven Wrapper startup script
-# ----------------------------------------------------------------------------
-
+# Apache Maven Wrapper
 PRG="$0"
 while [ -h "$PRG" ] ; do
   ls=`ls -ld "$PRG"`
@@ -32,6 +29,7 @@ while [ -h "$PRG" ] ; do
     PRG=`dirname "$PRG"`"/$link"
   fi
 done
+
 MAVEN_PROJECTBASEDIR=${MAVEN_PROJECTBASEDIR:-$(cd `dirname "$PRG"`/..; pwd)}
 export MAVEN_PROJECTBASEDIR
 exec "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" "$@"
