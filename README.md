@@ -26,5 +26,12 @@ cd sample-script
 export JAVA_HOME=$(/usr/libexec/java_home -v 17 2>/dev/null || echo "/path/to/jdk-17")
 ./mvnw test
 
-Need JDK 17?
+**Need JDK 17?**
 Download free in 2 minutes → adoptium.net
+
+Results Are Saved HereOS
+Location
+Windows ---> C:\Users\YourName\KyperianDemo\MM-DD-YYYY\01_Login and Out\Chrome\hhmm AM/
+Mac / Linux ---> ~/KyperianDemo/MM-DD-YYYY/01_Login and Out/Chrome/hhmm AM/
+
+Open the folder → See 6 screenshots + log → Proof your automation ran!
