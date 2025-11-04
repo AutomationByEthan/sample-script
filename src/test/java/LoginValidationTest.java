@@ -78,11 +78,11 @@ public class LoginValidationTest {
         appendToLog("\n\tUser: " + loginUserName + "\n");
     
         driver.findElement(By.xpath("//span[text()=\"Log out\"]")).click();
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[text()="Log in"]")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[text()="Welcome back!"]")));
         takeScreenshot(driver, "Logout Screen");
     
-        String titleText = driver.findElement(By.xpath("//h1[text()="Log in"]")).getText();
-        assertTrue(titleText.contains("Log in"), "Logout failed");
+        String titleText = driver.findElement(By.xpath("//h1[text()="Welcome back!"]")).getText();
+        assertTrue(titleText.contains("Welcome back!"), "Logout failed");
     
         System.out.println("VALIDATION 02 PASSED");
         appendToLog("\n\t\t- Validation 02: The User Successfully Logged Out \n");
