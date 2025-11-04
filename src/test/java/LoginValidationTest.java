@@ -34,54 +34,54 @@ public class LoginValidationTest {
 
     @Test
     public void loginAndValidate() throws Exception {
-        driver.get("https://app.todoist.com");
+        driver.get("https://todoist.com/login");
         takeScreenshot(driver, "Login Page");
-
-        // Invalid login
-        driver.findElement(By.cssSelector("input[type='email']")).sendKeys("LetsCreateAnErrorMessage@gmail.com");
-        driver.findElement(By.cssSelector("input[type='password']")).sendKeys("LetsCreateAnErrorMessage");
-        driver.findElement(By.cssSelector("button[type='submit']")).click();
-
+    
+        // Invalid login using XPaths
+        driver.findElement(By.xpath("//input[@type=\"email\"]")).sendKeys("LetsCreateAnErrorMessage@gmail.com");
+        driver.findElement(By.xpath("//input[@type=\"password\"]")).sendKeys("LetsCreateAnErrorMessage");
+        driver.findElement(By.cssSelector("button[type='submit']")).click(); // Keep CSS for button (or use XPath if needed)
+    
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()=\"Wrong email or password.\"]")));
         String errorText = errorElement.getText().trim();
         takeScreenshot(driver, "Invalid Login Error Message");
         assertTrue(errorText.equals("Wrong email or password."), "Invalid login message mismatch");
-
+    
         System.out.println("VALIDATION 01 PASSED");
         appendToLog("\n\t\t- Validation 01: Invalid Login Error Message Returns as Expected \n");
-
+    
         // Clear and enter valid credentials
-        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
+        WebElement emailField = driver.findElement(By.xpath("//input[@type=\"email\"]"));
         emailField.click();
         emailField.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
-        WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
+        WebElement passwordField = driver.findElement(By.xpath("//input[@type=\"password\"]"));
         passwordField.click();
         passwordField.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
-
-        driver.findElement(By.cssSelector("input[type='email']")).sendKeys("elgin.ethan@gmail.com");
-        driver.findElement(By.cssSelector("input[type='password']")).sendKeys("thisIsMyPassword");
+    
+        driver.findElement(By.xpath("//input[@type=\"email\"]")).sendKeys("elgin.ethan@gmail.com");
+        driver.findElement(By.xpath("//input[@type=\"password\"]")).sendKeys("thisIsMyPassword");
         takeScreenshot(driver, "Corrected Login Info");
         driver.findElement(By.cssSelector("button[type='submit']")).click();
-
+    
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@aria-label='Settings']")));
         takeScreenshot(driver, "Home Page");
-
+    
         driver.findElement(By.xpath("//button[@aria-label='Settings']")).click();
         Thread.sleep(1000);
         takeScreenshot(driver, "Account Dropdown");
-
+    
         WebElement userElement = driver.findElement(By.xpath("(//div[@role=\"menuitem\"]/span/span)[1]"));
         String loginUserName = userElement.getText().trim();
         appendToLog("\n\tUser: " + loginUserName + "\n");
-
+    
         driver.findElement(By.xpath("//span[text()=\"Log out\"]")).click();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[contains(text(), 'Log in')]")));
         takeScreenshot(driver, "Logout Screen");
-
+    
         String titleText = driver.findElement(By.xpath("//h1[contains(text(), 'Log in')]")).getText();
         assertTrue(titleText.contains("Log in"), "Logout failed");
-
+    
         System.out.println("VALIDATION 02 PASSED");
         appendToLog("\n\t\t- Validation 02: The User Successfully Logged Out \n");
         appendToLog("\n============================== [ End of Automation Execution ] ==============================\n\n");
