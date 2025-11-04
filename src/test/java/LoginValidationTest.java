@@ -35,6 +35,7 @@ public class LoginValidationTest {
     @Test
     public void loginAndValidate() throws Exception {
         driver.get("https://todoist.com/login");
+        Thread.sleep(2000);
         takeScreenshot(driver, "Login Page");
     
         // Invalid login using XPaths
@@ -65,6 +66,7 @@ public class LoginValidationTest {
         driver.findElement(By.cssSelector("button[type='submit']")).click();
     
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@aria-label='Settings']")));
+        Thread.sleep(2000);
         takeScreenshot(driver, "Home Page");
     
         driver.findElement(By.xpath("//button[@aria-label='Settings']")).click();
