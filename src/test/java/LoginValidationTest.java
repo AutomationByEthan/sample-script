@@ -77,7 +77,7 @@ public class LoginValidationTest {
         String loginUserName = userElement.getText().trim();
         appendToLog("\n\tUser: " + loginUserName + "\n");
     
-        driver.findElement(By.xpath("//span[text()="Log out"]")).click();
+        driver.findElement(By.xpath("//span[text()=\"Log out\"]")).click();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h1[text()='Welcome back!']")));
         takeScreenshot(driver, "Logout Screen");
     
